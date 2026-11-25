@@ -1,27 +1,101 @@
 <!doctype html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Medu Neter — the Hieroglyph Typewriter</title>
-    <meta name="description" content="Resurrecting a 3,000-year-old script: type anything and read it in real Egyptian hieroglyphs. A Kiroween 2026 project." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&family=Cinzel:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medu Neter — the Hieroglyph Typewriter</title>
+  <meta name="description" content="Resurrecting a 3,000-year-old script: type anything and read it in real Egyptian hieroglyphs. A Kiroween 2026 project." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&family=Cinzel:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
-    <main class="tomb">
-          <header>
-                  <div class="ankh">𓂀</div>div>
-                  <h1>Medu Neter</h1>
-                <p class="subtitle">the Hieroglyph Typewriter</p>p>
-                <p class="tagline">
-                  A dead script, resurrected. Type below and watch your words become the
-                  <em>medu neter</em> — t</em></h1>
-          </header>
-</body></title>
-  </head>
+  <main class="tomb">
+    <header>
+      <div class="ankh">𓂀</div>
+      <h1>Medu Neter</h1>
+      <p class="subtitle">the Hieroglyph Typewriter</p>
+      <p class="tagline">
+        A dead script, resurrected. Type below and watch your words become the
+        <em>medu neter</em> — the "words of the gods" — unread for millennia, alive again in your browser.
+      </p>
+    </header>
+
+    <section class="writer">
+      <label for="latin">Your words</label>
+      <textarea id="latin" rows="3" placeholder="Type your name, a curse, a blessing..." autofocus></textarea>
+
+      <div class="presets">
+        <span>Try a name:</span>
+        <button class="preset" data-text="Cleopatra">Cleopatra</button>
+        <button class="preset" data-text="Tutankhamun">Tutankhamun</button>
+        <button class="preset" data-text="Ramses">Ramses</button>
+        <button class="preset" data-text="Nefertiti">Nefertiti</button>
+      </div>
+
+      <div class="presets">
+        <span>Try a phrase:</span>
+        <button class="preset-phrase" data-text="peace">peace</button>
+        <button class="preset-phrase" data-text="i love you">i love you</button>
+        <button class="preset-phrase" data-text="truth">truth</button>
+        <button class="preset-phrase" data-text="magic">magic</button>
+        <button class="preset-phrase" data-text="eternity">eternity</button>
+        <button class="preset-phrase" data-text="good morning">good morning</button>
+      </div>
+      <label>Hieroglyphs</label>
+      <div id="output" class="glyphs" aria-live="polite">𓂀</div>
+      <p id="translit" aria-live="polite"></p>
+      <p id="phrase-note" class="phrase-note" aria-live="polite" hidden></p>
+
+      <div class="actions">
+        <button id="copy-btn" disabled>Copy hieroglyphs</button>
+        <button id="listen-btn" disabled>Listen</button>
+        <button id="download-btn" disabled>Download cartouche card</button>
+      </div>
+    </section>
+
+    <section class="cartouche-wrap">
+      <h2>Your cartouche</h2>
+      <p class="explain">
+        Pharaohs sealed their names inside an oval called a <em>shen</em> ring, a rope
+        looped end-to-end, protecting the name for eternity. Yours, below.
+      </p>
+      <div id="cartouche" class="cartouche">
+        <span id="cartouche-text" class="glyphs"></span>
+      </div>
+    </section>
+
+
+    <section class="guide">
+      <h2>Learn the alphabet</h2>
+      <p class="explain">
+        These are the uniliteral signs, one letter per sign, the first thing a student
+        of the script learns. Read your name below, then write it.
+      </p>
+      <div id="alphabet" class="alphabet"></div>
+    </section>
+
+    <section class="lore">
+      <h2>The resurrection</h2>
+      <p>
+        Hieroglyphic writing died out in the 4th century CE. For 1,400 years no one alive
+        could read it, until the Rosetta Stone cracked it open in 1822. This typewriter uses
+        the uniliteral alphabet of the Manuel de Codage, the same sign list Egyptologists
+        use today, rendered with the Unicode Egyptian Hieroglyphs block.
+      </p>
+      <p class="small">
+        Built with Kiro for Kiroween 2026, category: Resurrection. Open source (MIT).
+      </p>
+    </section>
+
+    <footer>
+      <p>𓆓 Medu Neter — words of the gods, typed by mortals 𓆓</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
