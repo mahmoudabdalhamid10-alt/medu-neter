@@ -243,6 +243,19 @@ function toHieroglyphs(text) {
   return out.join('');
 }
 
+// Map a Manuel de Codage transliteration string to hieroglyphs via UNILITERALS.
+// Parenthesized (optional) sounds are dropped; spaces become visible word gaps.
+function translitToGlyphs(t) {
+  const out = [];
+  for (const ch of t) {
+    if (ch === '(' || ch === ')') continue;
+    if (ch === ' ') { out.push('\u{2003}'); continue; }  // em space word gap
+    const sign = UNILITERALS[ch] || UNILITERALS[ch.toLowerCase()];
+    if (sign) out.push(sign);
+  }
+  return out.join('');
+}
+
 const input = document.getElementById('latin');
 const output = document.getElementById('output');
 const translit = document.getElementById('translit');
@@ -258,7 +271,7 @@ function render() {
   // Phrase lookup: if the input matches a known phrase, use the curated rendering.
   const phrase = PHRASES[key];
 
-  const glyphs = phrase ? phrase.glyphs : toHieroglyphs(text);
+  const glyphs = phrase ? translitToGlyphs(phrase.translit) : toHieroglyphs(text);
   const translitText = phrase ? phrase.translit : toTranslit(text);
 
   output.textContent = glyphs || '𓂀';
